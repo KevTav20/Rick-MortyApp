@@ -39,27 +39,27 @@ fun CharacterCard(character: Character, onClick: () -> Unit) {
             .padding(5.dp)
             .clickable { onClick() }
             .shadow(0.dp, RoundedCornerShape(0.dp)),
-        shape = RoundedCornerShape(10.dp), // Bordes más redondeados
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF3E3E3E)) // Color de fondo más oscuro
+        shape = RoundedCornerShape(10.dp),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF3E3E3E))
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = Modifier
-                .background(Color(0xFF212121)) // Fondo oscuro
+                .background(Color(0xFF212121))
                 .padding(15.dp)
                 .height(240.dp)
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .placeholder(R.drawable.rick) // Placeholder para la imagen
+                    .placeholder(R.drawable.rick)
                     .data(character.image)
                     .build(),
                 contentDescription = character.name,
                 modifier = Modifier
                     .size(130.dp)
                     .clip(CircleShape)
-                    .background(Color(0xFFD1D1D1)) // Fondo gris para la imagen
+                    .background(Color(0xFFD1D1D1))
                     .padding(10.dp)
                     .shadow(8.dp, CircleShape),
                 contentScale = ContentScale.Crop
@@ -69,24 +69,24 @@ fun CharacterCard(character: Character, onClick: () -> Unit) {
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp,
-                    color = Color(0xFF00FF00), // Color verde brillante
-                    textAlign = TextAlign.Center // Centrar el texto
+                    color = Color(0xFF00FF00),
+                    textAlign = TextAlign.Center
                 ),
                 modifier = Modifier
-                    .fillMaxWidth() // Asegúrate de que el texto ocupe todo el ancho disponible
-                    .padding(8.dp) // Padding para el texto
+                    .fillMaxWidth()
+                    .padding(8.dp)
             )
             // Añadir estado y especie
             Text(
                 text = "${character.status} - ${character.species}",
                 style = TextStyle(
                     fontSize = 14.sp,
-                    color = Color.White, // Color blanco para el estado
-                    textAlign = TextAlign.Center // Centrar el texto
+                    color = Color.White,
+                    textAlign = TextAlign.Center
                 ),
                 modifier = Modifier
-                    .fillMaxWidth() // Asegúrate de que el texto ocupe todo el ancho disponible
-                    .padding(bottom = 8.dp) // Padding inferior
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp)
             )
         }
     }
@@ -95,7 +95,7 @@ fun CharacterCard(character: Character, onClick: () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewCharacterCard() {
-    // Crear un ejemplo de personaje para la vista previa
+
     val exampleCharacter = Character(
         created = "2017-11-04T18:48:46.250Z",
         episode = listOf("S01E01", "S01E02"),
@@ -112,8 +112,6 @@ fun PreviewCharacterCard() {
     )
 
     RickAndMortyTheme {
-        CharacterCard(character = exampleCharacter) {
-            // Acción de clic vacía para la vista previa
-        }
+        CharacterCard(character = exampleCharacter){}
     }
 }

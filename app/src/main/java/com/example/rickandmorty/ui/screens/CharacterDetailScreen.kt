@@ -41,7 +41,7 @@ fun CharacterDetailScreen(id: Int, innerPadding: PaddingValues) {
                     .create(CharacterService::class.java)
 
                 // Obtener el personaje por ID
-                character = characterService.getCharacterById(id) // Asegúrate de tener este método en tu servicio
+                character = characterService.getCharacterById(id)
             } catch (e: Exception) {
                 Log.e("API Error", e.toString())
                 character = null

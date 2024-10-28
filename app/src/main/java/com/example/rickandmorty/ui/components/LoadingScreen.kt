@@ -21,7 +21,7 @@ fun LoadingScreen() {
         }
         .build()
 
-    // Uso de AsyncImage con el ImageLoader personalizado
+
     val painter = rememberAsyncImagePainter(
         model = "https://imgur.com/mZas4AF.gif",
         imageLoader = imageLoader
@@ -30,7 +30,7 @@ fun LoadingScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF222222)), // Fondo con color #222222
+            .background(Color(0xFF222222)),
         contentAlignment = Alignment.Center
     ) {
         Image(
