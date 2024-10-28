@@ -8,6 +8,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -35,6 +37,7 @@ import com.example.rickandmorty.models.Character
 import com.example.rickandmorty.models.Location
 import com.example.rickandmorty.models.Origin
 import com.example.rickandmorty.ui.theme.RickAndMortyTheme
+import androidx.compose.material3.Icon
 
 @Composable
 fun CharacterDetailCard(character: Character) {
@@ -129,9 +132,24 @@ fun CharacterDetailCard(character: Character) {
                     )
                     Spacer(modifier = Modifier.width(10.dp))
                     Icon(
-                        imageVector = if (character.status == "Alive") Icons.Default.CheckCircle else Icons.Default.Clear,
-                        contentDescription = if (character.status == "Alive") "Alive" else "Deceased",
-                        tint = if (character.status == "Alive") Color.Green else Color.Red,
+                        imageVector = when (character.status) {
+                            "Alive" -> Icons.Default.CheckCircle
+                            "Deceased" -> Icons.Default.Clear
+                            "unknown" -> Icons.Default.Warning
+                            else -> Icons.Default.Info
+                        },
+                        contentDescription = when (character.status) {
+                            "Alive" -> "Alive"
+                            "Deceased" -> "Deceased"
+                            "unknown" -> "Unknown"
+                            else -> "Unknown"
+                        },
+                        tint = when (character.status) {
+                            "Alive" -> Color.Green
+                            "Deceased" -> Color.Red
+                            "unknown" -> Color.Yellow
+                            else -> Color.Gray
+                        },
                         modifier = Modifier.size(20.dp)
                     )
                 }
@@ -255,7 +273,7 @@ fun PreviewCharacterDetailCard() {
         name = "Abadango Cluster Princess",
         origin = Origin(name = "Earth", url = "https://rickandmortyapi.com/api/location/1"),
         species = "Human",
-        status = "Alive",
+        status = "unkown",
         type = "Human",
         url = "https://rickandmortyapi.com/api/character/1"
     )
