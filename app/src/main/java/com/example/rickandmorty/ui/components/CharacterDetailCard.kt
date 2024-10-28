@@ -134,19 +134,19 @@ fun CharacterDetailCard(character: Character) {
                     Icon(
                         imageVector = when (character.status) {
                             "Alive" -> Icons.Default.CheckCircle
-                            "Deceased" -> Icons.Default.Clear
+                            "Dead" -> Icons.Default.Clear
                             "unknown" -> Icons.Default.Warning
                             else -> Icons.Default.Info
                         },
                         contentDescription = when (character.status) {
                             "Alive" -> "Alive"
-                            "Deceased" -> "Deceased"
+                            "Dead" -> "Dead"
                             "unknown" -> "Unknown"
                             else -> "Unknown"
                         },
                         tint = when (character.status) {
                             "Alive" -> Color.Green
-                            "Deceased" -> Color.Red
+                            "Dead" -> Color.Red
                             "unknown" -> Color.Yellow
                             else -> Color.Gray
                         },
